@@ -1,0 +1,106 @@
+{
+  "name": "FavListCheck",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "11u-bdMNERGDeIli-GIYdN-EcESvmjZHzEz2gXtCuAqU",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "1435186404",
+          "mode": "id"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "3e66e312-0a48-49ea-a4e4-247a6a2e5262",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "0fytiWHQApvB7fhx",
+          "name": "Google Sheets Trigger account 7"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json[\"Email\"] }}",
+        "subject": "=We got your favorites, {{ $json[\"Name\"] }}!",
+        "message": "=Hi {{ $json[\"Name\"] }},  Thank you for sharing your favorites!  🎬 Favorite Movie: {{ $json[\"Fav Movie\"] }} 🍫 Favorite Chocolate: {{ $json[\"Fav Chocolate\"] }} 🎨 Hobby: {{ $json[\"Hobby\"] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        208,
+        0
+      ],
+      "id": "dd95c3d6-392f-4e69-8f8b-e29797a5f8e8",
+      "name": "Send a message",
+      "webhookId": "45f6bda0-5dee-4ca2-b709-f33d6d2160fa",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "c5NfyIWBrO6XndDM",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Google Sheets Trigger": [
+      {
+        "json": {
+          "Timestamp": "11/10/2025 02:30:28",
+          "Name": "Dharani",
+          "Age": 19,
+          "Gender": "Female",
+          "Favourite Movie": "Pushpa2",
+          "Favourite Chocolate": "Kitkat",
+          "What is your Favourite Hobby": "Studying",
+          "Email": "dharanivavilla88@gmail.com",
+          "Column 7": ""
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "fafeca7f-27ef-42ef-8ee2-c66e63b8aba2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c4807ea61f1943535af86db6ca5bb1789ee8b362f901681cba6ca4b5a7197d25"
+  },
+  "id": "hynE2xs43psyxscd",
+  "tags": []
+}
